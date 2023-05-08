@@ -5,7 +5,7 @@ module.exports = {
     // CRUD all in one
 
     // create
-    createJoke: (req, res) => {
+    createNewJoke: (req, res) => {
     Joke.create(req.body)
         .then(newJoke => res.json(newJoke))
         .catch(err => res.status(400).json(err));
@@ -41,7 +41,7 @@ module.exports = {
     },
 
     // Random
-    showrandomJoke: (req, res) => {
+    showRandomJoke: (req, res) => {
         Joke.aggregate([{ $sample: { size: 1 }}])
         .then(randomJoke => res.json(randomJoke[0]))
         .catch(err => res.json(err))
